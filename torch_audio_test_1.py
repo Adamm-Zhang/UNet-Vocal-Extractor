@@ -219,9 +219,6 @@ test_loader = DataLoader(MUSDBStreamDataset("/content/musdb18hq", split="test"),
 
 model.eval()
 for i, stems in enumerate(train_loader1):
-    # Extract only vocals from stems
-    # stems might be a list of spectrograms or a stacked tensor
-    # vocal = stems[0] if isinstance(stems, (list, tuple)) else stems
 
     mix = stems[0]['mix'].unsqueeze(1)
     vocal = stems[0]['vocals'].unsqueeze(1)
