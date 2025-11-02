@@ -12,3 +12,8 @@ Improved audio reconstruction - currently audio is reconstructed using the phase
 We can do better by learning the phase directly in the model, or by generating phase information using a GAN vocoder at the output.  
 
 Temporal loss - some modern models use a loss criterion characterized by both temporal and spectral info for better accuracy.
+
+### Other Notes
+- Prefilting of the mix samples at 12kHz was attempted with the hypothesis that it would limit the total error magnitude when compared to the vocals, which have most
+of its character within 10kHz. This seemed to cause heavy error and distortion in the file output, likely because there were also frequencies above 12kHz in the vocal
+sample as a result of spectral leakage from the STFT operations.
