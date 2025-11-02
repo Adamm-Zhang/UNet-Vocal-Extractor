@@ -9,5 +9,5 @@ Output quality varies based on the input audio file; it works with reasonable cl
 
 ### Next Steps
 Improved audio reconstruction - currently audio is reconstructed using the phase information of the mix - this is technically incorrect
-We can do better by learning the phase directly in the model, or by generating phase information using a GAN vocoder at the output.
+We can do better by learning the phase directly in the model, or by generating phase information using a GAN vocoder at the output.\n
 Temporal loss - some modern models use a loss criterion characterized by both temporal and spectral info for better accuracy.
