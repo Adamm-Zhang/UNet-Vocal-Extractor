@@ -9,7 +9,7 @@ Output quality varies based on the input audio file; it works with reasonable cl
 
 ### Next Steps
 Improved audio reconstruction - currently audio is reconstructed using the phase information of the mix - this is technically incorrect
-We can do better by learning the phase directly in the model, or by generating phase information using a GAN vocoder at the output.  
+We can do better by learning the phase directly in the model, or by generating phase information using a GAN vocoder at the output.
 
 Temporal loss - some modern models use a loss criterion characterized by both temporal and spectral info for better accuracy.
 
@@ -17,3 +17,6 @@ Temporal loss - some modern models use a loss criterion characterized by both te
 - Prefilting of the mix samples at 12kHz was attempted with the hypothesis that it would limit the total error magnitude when compared to the vocals, which have most
 of its character within 10kHz. This seemed to cause heavy error and distortion in the file output, likely because there were also frequencies above 12kHz in the vocal
 sample as a result of spectral leakage from the STFT operations.
+- Update: GAN vocoder phase estimation was attempted with torchaudio's prebuilt vocoder - audio ends up distorted and washed out; unsure why. Best results still with using mix phase.
+This is interesting but makes sense; although vocal phase is numerically correct, the model only trains off vocal magnitudes, and only ever sees the mix data in full. It's possible that
+it implicitly learned to construct vocals dependent on that phase. Furthermore, mix artifacts exist within the vocal output.
