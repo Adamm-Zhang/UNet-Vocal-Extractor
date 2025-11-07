@@ -218,7 +218,7 @@ import soundfile as sf
 test_loader = DataLoader(MUSDBStreamDataset("/content/musdb18hq", split="test"), batch_size=1)
 
 model.eval()
-for i, stems in enumerate(train_loader1):
+for i, stems in enumerate(test_loader):
 
     mix = stems[0]['mix'].unsqueeze(1)
     vocal = stems[0]['vocals'].unsqueeze(1)
